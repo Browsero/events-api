@@ -1,19 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EventsModule } from './events/events.module';
+import { ConfigModule } from '@nestjs/config';
+import typeormConfig from './config/typeorm.config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'secret',
-      database: 'postgres',
-      autoLoadEntities: true,
-      synchronize: true,
-    }),
+    ConfigModule.forRoot({ load: [typeormConfig] }),
+    TypeOrmModule.forRootAsync({ useFactory: typeormConfig }),
     EventsModule,
   ],
 })
