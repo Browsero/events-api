@@ -21,5 +21,11 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": 'always', "prev": '*', "next": 'if' },
+      { "blankLine": 'always', "prev": 'if', "next": '*' },
+      { "blankLine": 'always', "prev": '*', "next": 'try' },
+    ]
   },
 };

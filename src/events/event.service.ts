@@ -17,9 +17,11 @@ export class EventService {
 
   async show(id: number): Promise<Event> {
     const event = await this.eventsRepository.findOne({ where: { id } });
+
     if (!event) {
       throw new NotFoundException(`Event #${id} not found`);
     }
+
     return event;
   }
 
